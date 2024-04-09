@@ -1,0 +1,7 @@
+# ninja log v5
+3	1212	7343378947048020	CMakeFiles/terraria_clone.dir/main.cpp.obj	fb8b549c5cd698f3
+1212	1334	7343378948239906	terraria_clone.exe	624a90a84bdb1cf1
+0	1242	7343381286014444	CMakeFiles/terraria_clone.dir/TextureContainer.cpp.obj	1f47cceb7b1de1f8
+4	1288	7343381286473226	CMakeFiles/terraria_clone.dir/main-game.cpp.obj	178b56c66a62de58
+6	1309	7343381286682658	CMakeFiles/terraria_clone.dir/EngineUtilsClass.cpp.obj	2bc11a0511f59d85
+1309	1446	7343381288029058	terraria_clone.exe	95886edd3148fb90

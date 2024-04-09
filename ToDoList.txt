@@ -1,0 +1,10 @@
+Draw Sprites to the screen
+	1. create a texture class
+		members:
+			SDL_Rect
+			SDL_Texture*
+
+	2. load png files
+		texture constructor overload: texture("img_filePath")
+
+	3. loadMedia()
