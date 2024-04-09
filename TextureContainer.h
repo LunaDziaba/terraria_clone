@@ -6,25 +6,27 @@
 class TextureContainer {
 public:
 	//Default Constructor, renderer and image file path needed to create the texture
-	TextureContainer(SDL_Renderer* renderer, std::string imgPath);
+	TextureContainer(SDL_Renderer* renderer, const std::string& imgPath);
 
 	~TextureContainer();
 
+    SDL_Texture* thisTexture;
+
 	//Get texture data
-	SDL_Rect getRect();
-	int getPosX();
-	int getPosY();
-	int getWidth();
-	int getHeight();
+    const SDL_Rect * getRect();
+	[[nodiscard]] int getPosX();
+	[[nodiscard]] int getPosY();
+	[[nodiscard]] int getWidth();
+	[[nodiscard]] int getHeight();
 
 private:
 	//
-	SDL_Texture* thisTexture;
-	//Having a premade rect for the texture may be helpful when using the texture
-	SDL_Rect textureRectangle;
+
+	//Having a pre-made rect for the texture may be helpful when using the texture
+	SDL_Rect textureRectangle{};
 	//direct variables of the texture, are initialized then passed to the rect
 	int PosX;
 	int PosY;
-	int width;
-	int height;
+	int width{};
+	int height{};
 };

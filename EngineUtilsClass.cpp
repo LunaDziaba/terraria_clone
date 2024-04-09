@@ -5,6 +5,7 @@
 #include <SDL_ttf.h>
 #include <iostream>
 #include <string>
+#include <utility>
 
 namespace EngineUtils {
 
@@ -20,7 +21,7 @@ namespace EngineUtils {
 	}
 	WindowClass::WindowClass(std::string givenName, int width, int height) {
 		//Set the window name as the name argument; set all variables to default values
-		WindowClass::windowName = givenName;
+		WindowClass::windowName = std::move(givenName);
 		thisWindow = nullptr;
 		WindowClass::windowWidth = width;
 		WindowClass::windowHeight = height;

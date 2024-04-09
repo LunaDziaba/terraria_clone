@@ -23,16 +23,16 @@ namespace EngineUtils {
 		void handleEvent(SDL_Event& event);
 
 		//Window dimensions
-		int getWidth() const;
+		[[nodiscard]] int getWidth() const;
 
-		int getHeight() const;
+		[[nodiscard]] int getHeight() const;
 
 		//Window foci
-		bool hasMouseFocus() const;
+		[[nodiscard]] bool hasMouseFocus() const;
 
-		bool hasKeyboardFocus() const;
+		[[nodiscard]] bool hasKeyboardFocus() const;
 
-		bool getIsMinimized() const;
+		[[nodiscard]] bool getIsMinimized() const;
 
 	private:
 		//Window name
