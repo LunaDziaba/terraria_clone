@@ -1,30 +1,21 @@
 #include "EngineUtilsClass.h"
 #include <SDL.h>
-#include <SDL_mixer.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include <SDL_ttf.h>
 #include <iostream>
 #include <string>
-#include <utility>
 
 namespace EngineUtils {
 
-	WindowClass::WindowClass() {
-		windowName = "";
-		thisWindow = nullptr;
-		windowWidth = 0;
-		windowHeight = 0;
-		mouseFocus = false;
-		keyboardFocus = false;
-		isFullscreen = false;
-		isMinimized = false;
-	}
 	WindowClass::WindowClass(std::string givenName, int width, int height) {
 		//Set the window name as the name argument; set all variables to default values
 		WindowClass::windowName = std::move(givenName);
 		thisWindow = nullptr;
 		WindowClass::windowWidth = width;
 		WindowClass::windowHeight = height;
+        scaleX = width / 1920.0;
+        scaleY = height / 1080.0;
 		mouseFocus = false;
 		keyboardFocus = false;
 		isFullscreen = false;
@@ -82,6 +73,8 @@ namespace EngineUtils {
 		case SDL_WINDOWEVENT_RESIZED:
 			windowWidth = event.window.data1;
 			windowHeight = event.window.data2;
+            scaleX = windowWidth / 1920.0;
+            scaleY = windowHeight / 1080.0;
 			break;
 
 			//if mouse enters the window, set mouseFocus to true
@@ -123,6 +116,14 @@ namespace EngineUtils {
 	int WindowClass::getHeight() const {
 		return windowHeight;
 	}
+
+    double WindowClass::getScaleX() const {
+        return scaleX;
+    }
+
+    double WindowClass::getScaleY() const {
+        return scaleY;
+    }
 
 	bool WindowClass::hasMouseFocus() const {
 		return mouseFocus;

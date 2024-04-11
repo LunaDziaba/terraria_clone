@@ -7,7 +7,6 @@ namespace EngineUtils {
 	class WindowClass {
 	public:
 		//Constructor
-		WindowClass();
 		WindowClass(std::string givenName, int width, int height);
 
 		//Destructor
@@ -24,14 +23,13 @@ namespace EngineUtils {
 
 		//Window dimensions
 		[[nodiscard]] int getWidth() const;
-
 		[[nodiscard]] int getHeight() const;
+        [[nodiscard]] double getScaleX() const;
+        [[nodiscard]] double getScaleY() const;
 
 		//Window foci
 		[[nodiscard]] bool hasMouseFocus() const;
-
 		[[nodiscard]] bool hasKeyboardFocus() const;
-
 		[[nodiscard]] bool getIsMinimized() const;
 
 	private:
@@ -44,6 +42,8 @@ namespace EngineUtils {
 		//Window dimensions
 		int windowWidth;
 		int windowHeight;
+        double scaleX;
+        double scaleY;
 
 		//Window focus
 		bool mouseFocus;
