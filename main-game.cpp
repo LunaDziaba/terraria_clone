@@ -5,9 +5,12 @@
 #include <filesystem>
 #include <vector>
 
+#include "globals.h"
+
 EngineUtils::WindowClass globalWindow("TerrariaClone", 1280, 720);
 EngineUtils::WindowClass* globalWindowPtr = &globalWindow;
 SDL_Renderer* globalRenderer;
+
 
 int SDL_main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
@@ -16,7 +19,7 @@ int SDL_main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     } else {
         TextureContainer splash_9_0("../Images/Splash_9_0.png");
 
-        Tiling::Tiles dirt_tiles("../xml/dirt_tiles.xml");
+        Tiling::Tile dirt_tiles("../xml/dirt_tiles.xml");
         std::vector<std::vector<int>> tileMap = {
                 {0, 1, 2},
                 {7, 8, 9},

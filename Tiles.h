@@ -10,13 +10,13 @@
 //tiling holds various things used for tiling (classes, etc.)
 namespace Tiling {
 
-    class Tiles : public TextureContainer {
+    class Tile : public TextureContainer {
     public:
-        explicit Tiles(const std::string &xmlFilePath);
+        Tile() = default;
+        explicit Tile(const std::string &xmlFilePath);
 
-        ~Tiles() = default;
-
-        std::unordered_map<int, SDL_Rect> tileSet;
+        //std::unordered_map<int, SDL_Rect> tileSet;
+        void render();
 
         bool isSolid() const;
         bool isLiquid() const;
@@ -29,13 +29,13 @@ namespace Tiling {
     private:
         std::string imgPath;
 
-        bool solid;
-        bool liquid;
-        bool breakable;
-        bool gravity;
+        bool solid{};
+        bool liquid{};
+        bool breakable{};
+        bool gravity{};
 
-        int miningLevel;
-        int toolNeeded; //0 = pickaxe, 1 = axe, 2 = hammer
+        int miningLevel{};
+        int toolNeeded{}; //0 = pickaxe, 1 = axe, 2 = hammer
 
     };
 

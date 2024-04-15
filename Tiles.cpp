@@ -1,12 +1,13 @@
 #include "globals.h"
 #include "Tiles.h"
 #include <rapidxml.hpp>
+#include <unordered_map>
 #include <fstream>
 #include <vector>
 
 namespace Tiling {
 
-    Tiles::Tiles(const std::string &xmlFilePath) {
+    Tile::Tile(const std::string &xmlFilePath) {
         //Load Tile data from the XML file using RapidXML
         rapidxml::xml_document<> doc;
         rapidxml::xml_node<>* root_node;
@@ -27,7 +28,7 @@ namespace Tiling {
         miningLevel = (std::stoi(root_node->first_node("MiningLevel")->value()));
         toolNeeded = (std::stoi(root_node->first_node("ToolNeeded")->value()));
         //Iterate through the "TileSprite" elements
-        for (rapidxml::xml_node<>* tileSprite_node = root_node->first_node("TileSprite"); tileSprite_node;
+        /*for (rapidxml::xml_node<>* tileSprite_node = root_node->first_node("TileSprite"); tileSprite_node;
         tileSprite_node = tileSprite_node->next_sibling("TileSprite")) {
             int index = std::stoi(tileSprite_node->first_node("Index")->value());
             int x = std::stoi(tileSprite_node->first_node("X")->value());
@@ -37,32 +38,36 @@ namespace Tiling {
 
             //Create the SDL_Rect and store it in the tileSet
             tileSet[index] = {x, y, width, height};
-        }
-        loadFromFile("../Images/dirt_tiles.png");
+        }*/
+        loadFromFile(imgPath);
     }
 
-    bool Tiles::isSolid() const {
+    bool Tile::isSolid() const {
         return solid;
     }
 
-    bool Tiles::isLiquid() const {
+    bool Tile::isLiquid() const {
         return liquid;
     }
 
-    bool Tiles::canBreak() const {
+    bool Tile::canBreak() const {
         return breakable;
     }
 
-    bool Tiles::hasGravity() const {
+    bool Tile::hasGravity() const {
         return gravity;
     }
 
-    int Tiles::getMiningLevel() const {
+    int Tile::getMiningLevel() const {
         return miningLevel;
     }
 
-    int Tiles::getNeededTool() const {
+    int Tile::getNeededTool() const {
         return toolNeeded;
     }
 }
+
+
+
+
 

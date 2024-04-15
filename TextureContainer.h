@@ -9,7 +9,7 @@ public:
     TextureContainer() = default;
     explicit TextureContainer(const std::string& imgPath);
 
-    ~TextureContainer();
+	virtual ~TextureContainer();
 
     void loadFromFile(const std::string &imgPath);
 

@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 
+#include "globals.h"
+
 namespace EngineUtils {
 
 	WindowClass::WindowClass(std::string givenName, int width, int height) {
@@ -52,7 +54,7 @@ namespace EngineUtils {
 		return windowRenderer;
 	}
 
-	void WindowClass::handleEvent(SDL_Event& event) {
+	void WindowClass::handleEvent(const SDL_Event& event) {
 		switch (event.window.event) {
 			//if the user requests to close the window, destroy the window
 		case SDL_WINDOWEVENT_CLOSE:
@@ -106,6 +108,8 @@ namespace EngineUtils {
 		case SDL_WINDOWEVENT_MINIMIZED:
 			isMinimized = true;
 			break;
+		default:
+			break;
 		}
 	}
 
@@ -145,8 +149,7 @@ namespace EngineUtils {
 		}
 		else {
 			// Initialize SDL_image
-			int imgFlags = IMG_INIT_PNG; // Adjust this flag according to the image formats you are using
-			if (!(IMG_Init(imgFlags) & imgFlags)) {
+			if (constexpr int imgFlags = IMG_INIT_PNG; !(IMG_Init(imgFlags) & imgFlags)) {
 				// Error handling if SDL_image initialization fails
 				std::cerr << "SDL_image could not initialize! SDL_image_Error: " << IMG_GetError() << '\n';
 				return false;

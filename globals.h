@@ -1,6 +1,8 @@
 #pragma once
+#include "Tiles.h"
 #include "EngineUtilsClass.h"
 #include <SDL.h>
+#include <unordered_map>
 
 //Instantiate the window with name TerrariaClone, and initial width and height of 1280x720
 extern EngineUtils::WindowClass globalWindow;

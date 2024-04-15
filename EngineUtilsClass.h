@@ -19,7 +19,7 @@ namespace EngineUtils {
 		SDL_Renderer* createRenderer();
 
 		//Handle window events
-		void handleEvent(SDL_Event& event);
+		void handleEvent(const SDL_Event& event);
 
 		//Window dimensions
 		[[nodiscard]] int getWidth() const;
