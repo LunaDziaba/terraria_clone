@@ -38,8 +38,8 @@ int SDL_main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                 globalWindow.handleEvent(e);
             //End of event handling
             }
-            int offsetX = dirt_tiles.tileSet[0].w * globalWindow.getScaleX();
-            int offsetY = dirt_tiles.tileSet[0].h * globalWindow.getScaleY();
+            int offsetX = dirt_tiles.getTileSet(0)->w * globalWindow.getScaleX();
+            int offsetY = dirt_tiles.getTileSet(0)->h * globalWindow.getScaleY();
             int middleOfScreenX = globalWindow.getWidth() / 2;
             int middleOfScreenY = globalWindow.getHeight() / 2;
             //Clear the screen
@@ -52,7 +52,7 @@ int SDL_main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                 for (int col = 0; col < tileMap[row].size(); col++) {
                     int tileIndex = tileMap[row][col];
                     if (tileIndex >= 0) {
-                        SDL_Rect* tileRect = &dirt_tiles.tileSet[tileIndex];
+                        const SDL_Rect *tileRect = dirt_tiles.getTileSet(tileIndex);
                         dirt_tiles.render(middleOfScreenX + (offsetX * col),
                                           middleOfScreenY + (offsetY * row),
                                           tileRect,

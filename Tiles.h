@@ -16,18 +16,21 @@ namespace Tiling {
         explicit Tile(const std::string &xmlFilePath);
 
         //std::unordered_map<int, SDL_Rect> tileSet;
-        void render();
+        void render(int x, int y, const SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) const;
 
-        bool isSolid() const;
-        bool isLiquid() const;
-        bool canBreak() const;
-        bool hasGravity() const;
+        [[nodiscard]] bool isSolid() const;
+        [[nodiscard]] bool isLiquid() const;
+        [[nodiscard]] bool canBreak() const;
+        [[nodiscard]] bool hasGravity() const;
 
-        int getMiningLevel() const;
-        int getNeededTool() const;
+        [[nodiscard]] int getMiningLevel() const;
+        [[nodiscard]] int getNeededTool() const;
+
+        [[nodiscard]] const SDL_Rect *getTileSet(int index) const;
 
     private:
         std::string imgPath;
+
 
         bool solid{};
         bool liquid{};
@@ -37,6 +40,7 @@ namespace Tiling {
         int miningLevel{};
         int toolNeeded{}; //0 = pickaxe, 1 = axe, 2 = hammer
 
+        SDL_Rect tileSet[];
     };
 
 }
