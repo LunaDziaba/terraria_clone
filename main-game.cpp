@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <filesystem>
 #include <vector>
-
+#include <fstream>
 #include "globals.h"
 
 EngineUtils::WindowClass globalWindow("TerrariaClone", 1280, 720);
@@ -19,6 +19,9 @@ int SDL_main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     } else {
         TextureContainer splash_9_0("../Images/Splash_9_0.png");
 
+        if (std::ifstream dirt_tilemap("../xml/dirt_tiles.xml"); !dirt_tilemap.is_open()) {
+        std::cerr << "Could not open file: " << "../xml/dirt_tiles.xml" << std::endl;
+        }
         Tiling::Tile dirt_tiles("../xml/dirt_tiles.xml");
         std::vector<std::vector<int>> tileMap = {
                 {0, 1, 2},
