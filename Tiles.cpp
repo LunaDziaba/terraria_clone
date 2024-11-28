@@ -88,10 +88,10 @@ namespace Tiling {
         }
 
         imgPath = root_node->first_node("ImageFilePath")->value();
-        solid = (std::string(root_node->first_node("IsSolid")->value()) == "true");
-        liquid = (std::string(root_node->first_node("IsLiquid")->value()) == "true");
-        breakable = (std::string(root_node->first_node("IsBreakable")->value()) == "true");
-        gravity = (std::string(root_node->first_node("HasGravity")->value()) == "true");
+        solid = root_node->first_node("IsSolid")->value();
+        liquid = root_node->first_node("IsLiquid")->value();
+        breakable = root_node->first_node("IsBreakable")->value();
+        gravity = root_node->first_node("HasGravity")->value();
         miningLevel = std::stoi(root_node->first_node("MiningLevel")->value());
         toolNeeded = std::stoi(root_node->first_node("ToolNeeded")->value());
 
